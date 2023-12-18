@@ -35,11 +35,11 @@ export default {
   props: {
     columnHeaders: {
       type: Array,
-      default: () => ['Nome da página', 'Url', 'Carregamento da página']
+      default: () => []
     },
     columnKeys: {
       type: Array,
-      default: () => ['Nome', 'Url', 'CarregamentoDaPagina']
+      default: () => []
     },
     data: {
       type: Array,
@@ -53,6 +53,11 @@ export default {
     const linhas = ref(props.data);
 
     const linhasFiltradas = ref(linhas.value);
+
+    watch(() => props.data, (newData) => {
+      linhas.value = newData;
+      buscarNaTabela();
+    });
 
     watch(consultaBusca, () => {
       buscarNaTabela();
@@ -118,6 +123,8 @@ export default {
   },
 };
 </script>
+
+,4
 
 <style>
 body {

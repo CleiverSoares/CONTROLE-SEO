@@ -1,26 +1,26 @@
 export default (httpClient) => ({
 
-  getPessoas: async () => {
-    const response = await httpClient.get('/treino')
+  getTodos: async () => {
+    const response = await httpClient.get('/varejo')
     return {
       data: response.data,
     }
   },
   criarPessoa: async (pessoa) => {
-    const response = await httpClient.post("/treino", pessoa)
+    const response = await httpClient.post("/varejo", pessoa)
 
     return {
       data: response.data,
     }
   },
   updatePessoa: async (pessoa) => {
-    const response = await httpClient.put(`/treino/${pessoa.id}`, pessoa)
+    const response = await httpClient.put(`/varejo/${pessoa.id}`, pessoa)
 
     return {
       data: response.data,
     }
   },
   deletarPessoa: async (id) => {
-    await httpClient.delete(`/treino/${id}`)
+    await httpClient.delete(`/varejo/${id}`)
   }
 })
